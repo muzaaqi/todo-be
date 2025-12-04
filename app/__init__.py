@@ -9,5 +9,5 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from app.model import users, todo
+from app.models import User, Todo, Category
 from app import routes
