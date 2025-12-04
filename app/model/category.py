@@ -1,11 +1,6 @@
 from app import db
+from app.model.asocative_table import todo_categories
 from datetime import datetime
-
-todo_categories = db.Table(
-    'todo_categories',
-    db.Column('todo_id', db.Integer, db.ForeignKey('todos.id', ondelete='CASCADE'), primary_key=True),
-    db.Column('category_id', db.Integer, db.ForeignKey('categories.id', ondelete='CASCADE'), primary_key=True)
-)
 
 class Category(db.Model):
     __tablename__ = 'categories'
