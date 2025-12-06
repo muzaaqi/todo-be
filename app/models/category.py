@@ -1,5 +1,5 @@
 from app import db
-from app.models import todo_categories
+from app.models.asocative_table import todo_categories
 from datetime import datetime
 
 class Category(db.Model):

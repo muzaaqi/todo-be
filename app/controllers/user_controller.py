@@ -3,8 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 
 from app.models.user import User
-from app.modules.response import response
-from config import db
+from app.modules import response
+from app import db
 
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 

@@ -17,10 +17,9 @@ def create_app():
     CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://localhost:5173", "https://todo.muzaaqi.my.id"]}})
     JWTManager(app)
 
-    from app.models import User
-    from app.models import Todo
-    from app.models import Category
-    from app.models import todo_categories
+    from app.models.user import User
+    from app.models.todo import Todo
+    from app.models.category import Category
 
     from app.routes import api
     app.register_blueprint(api)

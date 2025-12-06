@@ -2,8 +2,8 @@ from flask import Blueprint, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from app.models.todo import Todo
-from app.modules.response import response
-from config import db
+from app.modules import response
+from app import db
 
 todo_bp = Blueprint("todo", __name__, url_prefix="/todo")
 
