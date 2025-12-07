@@ -16,12 +16,12 @@ def get_all():
 
     data = [
         {
-            "id": t.id,
-            "title": t.title,
-            "description": t.description,
-            "completed": t.completed,
+            "id": todo.id,
+            "title": todo.title,
+            "description": todo.description,
+            "completed": todo.completed,
         }
-        for t in todos
+        for todo in todos
     ]
 
     return response.ok(data)
