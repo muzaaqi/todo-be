@@ -20,7 +20,7 @@ def register():
 
     new_user = User(
         username=username,
-        password_hash=generate_password_hash(password)
+        password=generate_password_hash(password)
     )
     db.session.add(new_user)
     db.session.commit()
@@ -35,10 +35,10 @@ def login():
     password = data.get("password")
 
     user = User.query.filter_by(username=username).first()
-    if not user or not check_password_hash(user.password_hash, password):
+    if not user or not check_password_hash(user.password, password):
         return response.unauthorized("Invalid username or password")
 
-    token = create_access_token(identity=user.id)
+    token = create_access_token(identity=str(user.id))
 
     return response.ok({"token": token}, "Login success")
 
@@ -49,7 +49,10 @@ def get_profile():
     uid = get_jwt_identity()
     user = User.query.get(uid)
 
+    if not user:
+        return response.not_found("User not found")
+
     return response.ok({
         "id": user.id,
         "username": user.username
-    })
+    }, "")
