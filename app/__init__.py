@@ -14,7 +14,7 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
-    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://localhost:5173", "https://todo.muzaaqi.my.id"]}})
+    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "http://localhost:5173", "https://todo.muzaaqi.my.id"], "supports_credentials": True, "allow_headers": ["Content-Type", "Authorization"]} })
     JWTManager(app)
 
     from app.models.user import User
